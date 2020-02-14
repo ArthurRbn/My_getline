@@ -1,0 +1,27 @@
+This is a project in C where I had to recode the getline function in C.
+usage :
+
+char *get_next_line(int fd);
+
+Call the function with as parameter a filedescriptor and it will return next line
+at each call or NULL if there is nothing to return (empty file or end reached).
+You can define READ_SIZE in get_next_line.h
+
+Example :
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+char *get_next_line(int);
+
+int main(void)
+{
+    int fd = open("test.txt");
+    char *line = NULL;
+
+    line = get_next_line(fd);
+    printf("%s\n", line);
+    close(fd);
+    return (0);
+}
